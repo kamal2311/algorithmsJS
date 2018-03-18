@@ -1,4 +1,4 @@
-# algothimsJS
+# algorithmsJS
 Basic algorithms in JS based on a udemy course
 
 This is my implementation of the algoirthms mentioned in a Udemy course
