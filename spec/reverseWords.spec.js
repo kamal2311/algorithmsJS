@@ -1,4 +1,4 @@
-describe('reverseWords', () => {
+describe('Reverse words', () => {
     it('should reverse "this is a string" to "siht si a gnirts"', () => {
         const actual = reverseWords("this is a string");
         expect(actual).toBe("siht si a gnirts");
