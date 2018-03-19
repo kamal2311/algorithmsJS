@@ -11,3 +11,18 @@ function mean(inputArray) {
     const total = inputArray.reduce((sum, current) => sum + current, 0);
     return total / inputArray.length;
 }
+
+function median(inputArray) {
+    inputArray.sort();
+
+    const length = inputArray.length;
+
+    const isOdd = length % 2 === 1;
+
+    if (isOdd) {
+        return inputArray[Math.floor(length / 2)];
+    }
+
+    return (inputArray[length / 2] + inputArray[length / 2 - 1]) / 2;
+}
+

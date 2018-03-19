@@ -16,4 +16,14 @@ describe("Mean median mode", () => {
             expect(mean([])).toBe(0);
         });
     });
+
+    describe('Median', () => {
+        it('should return 3.5 as median of [1,2,3,3,4,4,4,7]', () => {
+            expect(median([1, 2, 3, 3, 4, 4, 4, 7])).toBe(3.5);
+        });
+
+        it('should return 3 as the median of [1,2,3,7,8]', () => {
+            expect(median([1, 2, 3, 7, 8])).toBe(3);
+        });
+    });
 });
