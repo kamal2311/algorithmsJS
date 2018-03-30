@@ -1,18 +1,15 @@
 function mean(inputArray) {
 
-    if (inputArray === undefined) {
-        throw new Error('InvalidInput');
-    }
-
-    if (inputArray.length === 0) {
-        return 0;
-    }
+    checkInput(inputArray);
 
     const total = inputArray.reduce((sum, current) => sum + current, 0);
     return total / inputArray.length;
 }
 
 function median(inputArray) {
+
+    checkInput(inputArray);
+
     inputArray.sort();
 
     const length = inputArray.length;
@@ -28,12 +25,10 @@ function median(inputArray) {
 
 function mode(inputArray) {
 
-    if (inputArray === undefined) {
-        throw new Error("InvalidInput");
-    }
+    checkInput(inputArray);
 
     const counts = {};
-    let maxOccuringVal = inputArray[0];
+    let maxOccuringVal = [inputArray[0]];
     let maxFrequency = 1;
     inputArray.forEach(val => {
         if (counts.hasOwnProperty(val)) {
@@ -43,9 +38,12 @@ function mode(inputArray) {
             counts[val] = 1;
         }
 
-        if (counts[val] >= maxFrequency) {
+        if (counts[val] > maxFrequency) {
             maxFrequency = counts[val];
-            maxOccuringVal = val;
+            maxOccuringVal = [val];
+        }
+        else if (counts[val] === maxFrequency) {
+            maxOccuringVal.push(val);
         }
     });
 
@@ -54,6 +52,9 @@ function mode(inputArray) {
 
 
 function meanMedianMode(inputArray) {
+
+    checkInput(inputArray);
+
     const answer = {};
 
     answer.mean = mean(inputArray);
@@ -62,3 +63,9 @@ function meanMedianMode(inputArray) {
 
     return answer;
 }
+function checkInput(inputArray) {
+    if (inputArray === undefined || inputArray.length === 0) {
+        throw new Error("InvalidInput");
+    }
+}
+
