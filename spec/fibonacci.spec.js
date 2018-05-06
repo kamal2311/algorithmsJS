@@ -23,6 +23,15 @@ describe("Fibonnaci", () => {
         });
 
 
+        it('Negative input should throw an InvalidInput error', () => {
+            expect(() => fibRecursive(-10)).toThrow(new Error('InvalidInput'));
+        });
+
+        it('Non-integer input should throw InvalidInput error', () => {
+            expect(() => fibRecursive(2.5)).toThrow(new Error('InvalidInput'));
+        });
+
+
     });
 
     describe('iterative', () => {
@@ -45,6 +54,14 @@ describe("Fibonnaci", () => {
 
         it('at n=40 should run super quickly', () => {
             expect(measureTime(fibIterative, 40)).toBeLessThan(1);
+        });
+
+        it('Negative input should throw an InvalidInput error', () => {
+            expect(() => fibIterative(-10)).toThrow(new Error('InvalidInput'));
+        });
+
+        it('Non-integer input should throw InvalidInput error', () => {
+            expect(() => fibIterative(2.5)).toThrow(new Error('InvalidInput'));
         });
 
     });

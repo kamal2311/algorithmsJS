@@ -1,4 +1,9 @@
 function fibRecursive(n) {
+
+    if (!Number.isInteger(n) || n < 0) {
+        throw new Error('InvalidInput');
+    }
+
     if (n <= 2) {
         return 1;
     }
@@ -7,6 +12,10 @@ function fibRecursive(n) {
 }
 
 function fibIterative(n) {
+
+    if (!Number.isInteger(n) || n < 0) {
+        throw new Error('InvalidInput');
+    }
 
     let i = 1, j = 1, k = 3;
 
