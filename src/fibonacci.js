@@ -35,3 +35,26 @@ function fibIterative(n) {
     return sum;
 
 }
+
+function fibMemoized(n) {
+    if (!Number.isInteger(n) || n < 0) {
+        throw new Error('InvalidInput');
+    }
+
+    return fibWithCache(n, []);
+}
+
+function fibWithCache(n, cache) {
+
+    if (n <= 2) {
+        return 1;
+    }
+
+    if (cache[n]) {
+        return cache[n];
+    }
+
+    cache[n] = fibWithCache(n - 1, cache) + fibWithCache(n - 2, cache);
+
+    return cache[n];
+}

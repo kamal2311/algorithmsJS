@@ -66,6 +66,16 @@ describe("Fibonnaci", () => {
 
     });
 
+    describe('Memoized ', () => {
+        it('at n=9 should be 34', () => {
+            expect(fibMemoized(9)).toBe(34);
+        });
+
+        it('at n=100 should calculate the value quickly', () => {
+            expect(fibMemoized(50)).toBe(12586269025);
+        });
+    });
+
     function measureTime(toMeasure, n) {
         const start = performance.now();
         toMeasure(n);
