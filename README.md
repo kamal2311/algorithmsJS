@@ -5,6 +5,7 @@ This is my implementation of the algoirthms mentioned in a Udemy course
 https://www.udemy.com/learning-algorithms-in-javascript-from-scratch/
 
 Open index.html in your browser to see all the specs (Unit tests).
+or visit https://kamal2311.github.io/algorithmsJS/
 
 Algorithms implemented are
 
