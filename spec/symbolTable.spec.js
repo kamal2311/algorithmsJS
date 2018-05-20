@@ -1,4 +1,4 @@
-fdescribe('Symbol table', () => {
+describe('Symbol table', () => {
 
     let symbolTable = new SymbolTable();
 
