@@ -53,5 +53,6 @@ will output "reversed be will this"
 ## Two sum
 ## Binary search
 ## Quick find in connected components
+## Symbol table implemented with a linked list
 
 
