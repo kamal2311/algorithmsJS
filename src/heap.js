@@ -11,16 +11,18 @@ class MaxHeap {
 
     insert(val) {
         this.nums.push(val);
-        this.size = this.nums.length - 1;
-        this.swim(this.size);
+        this.swim(this.size());
+    }
+
+    size() {
+        return this.nums.length - 1;
     }
 
     swim(k) {
 
-        let current = k;
-        while (Math.floor(current / 2) >= 1 && this.nums[Math.floor(current / 2)] < this.nums[current]) {
-            this.swap(current, Math.floor(current / 2));
-            current = Math.floor(current / 2);
+        while (k > 1 && this.nums[Math.floor(k / 2)] < this.nums[k]) {
+            this.swap(k, Math.floor(k / 2));
+            k = Math.floor(k / 2);
         }
     }
 
@@ -37,50 +39,29 @@ class MaxHeap {
     delMax() {
 
         const max = this.nums[1];
-        this.swap(1, this.size);
+        this.swap(1, this.size());
         this.nums.pop();
-        this.size--;
         this.sink(1);
         return max;
     }
 
     sink(k) {
 
-        const leftChildIndex = 2 * k;
-        const rightChildIndex = 2 * k + 1;
+        while (2 * k <= this.size()) {
 
+            let j = 2 * k;
 
-        if (this.nums[leftChildIndex] === undefined) {
-            return;
+            if (j < this.size() && this.nums[j] < this.nums[j + 1]) {
+                j++;
+            }
+
+            if (this.nums[k] > this.nums[j]) {
+                break;
+            }
+
+            this.swap(k, j);
+            k = j;
         }
-
-        if (this.nums[rightChildIndex] === undefined) {
-
-            if (this.nums[k] > this.nums[leftChildIndex]) {
-                return;
-            }
-
-            else {
-                this.swap(k, leftChildIndex);
-                this.sink(leftChildIndex);
-            }
-
-        }
-
-        else {
-
-            if (this.nums[k] > this.nums[leftChildIndex] && this.nums[k] > this.nums[rightChildIndex]) {
-                return;
-            }
-
-            else {
-
-                const toSwap = this.nums[leftChildIndex] > this.nums[rightChildIndex] ? leftChildIndex : rightChildIndex;
-                this.swap(k, toSwap);
-                this.sink(toSwap);
-            }
-        }
-
     }
 
 }
